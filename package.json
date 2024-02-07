@@ -1,0 +1,31 @@
+{
+  "name": "parcel-vue3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/config-default": "^2.11.0",
+    "@parcel/resolver-glob": "^2.11.0",
+    "@parcel/transformer-vue": "2.11.0",
+    "parcel": "^2.11.0",
+    "process": "^0.11.10",
+    "pug": "^3.0.2",
+    "sass": "^1.70.0"
+  },
+  "dependencies": {
+    "@vue/compat": "^3.4.15",
+    "element-plus": "^2.5.3",
+    "element-ui": "^2.15.14",
+    "fecha": "^4.2.3",
+    "lodash": "^4.17.21",
+    "vue": "^3.4.15",
+    "vue-form-generator": "^2.3.4",
+    "vue3-form-generator": "^1.0.17"
+  }
+}
