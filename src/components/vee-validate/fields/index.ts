@@ -1,0 +1,1 @@
+export { default as fieldElText } from "./field-text.vue"

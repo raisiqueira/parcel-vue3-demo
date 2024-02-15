@@ -1,9 +1,8 @@
 
 <script setup lang="ts">
-import { FieldContextKey, useForm } from 'vee-validate';
+import { useForm } from 'vee-validate';
 import * as zod from 'zod';
 import { toTypedSchema } from '@vee-validate/zod';
-import { inject } from 'vue';
 
 const schema = toTypedSchema(
   zod.object({
@@ -19,7 +18,8 @@ const schema = toTypedSchema(
 const { defineField, handleSubmit, resetForm, errors } = useForm({
   validationSchema: schema,
   initialValues: {
-    terms: false,
+    terms: true,
+    email: 'john@doe.com'
   },
 });
 
@@ -46,12 +46,10 @@ const onSubmit = handleSubmit((values) => {
 });
 
 const options = ['Enterprise', 'Pro', 'Freelance'];
-const fieldContext = inject(FieldContextKey);
-console.log('fieldContext', fieldContext);
 </script>
 
 <template>
-  <el-form @submit="onSubmit">
+  <el-form @submit="onSubmit" label-position="top">
     <el-form-item v-bind="emailProps" label="Email">
       <el-input placeholder="Email Address" v-model="email" />
     </el-form-item>

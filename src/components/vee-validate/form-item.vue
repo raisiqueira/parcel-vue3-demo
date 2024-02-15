@@ -1,6 +1,7 @@
 <script>
-import { provide } from 'vue'
+import { provide, defineProps } from 'vue'
 import { useId } from 'radix-vue'
+import { FORM_ITEM_INJECTION_KEY } from "./constants"
 
 const props = defineProps({
   class: {
@@ -8,9 +9,6 @@ const props = defineProps({
     default: 'space-y-2'
   }
 })
-
-export const FORM_ITEM_INJECTION_KEY
-  = Symbol()
 
 const id = useId()
 provide(FORM_ITEM_INJECTION_KEY, id)

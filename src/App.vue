@@ -9,6 +9,7 @@ import { reactive, computed } from "vue";
 import vfgNative from "./examples/vfg-native.vue";
 import vfgElementUi from "./examples/vfg-element-ui.vue";
 import vvElementUi from "./examples/vv-element-ui.vue";
+import vvCustomField from "./examples/vv-custom-field.vue";
 
 const state = reactive({
   count: 0,
@@ -38,5 +39,9 @@ function increment() {
   <div>
     <h3>ElementUI Vee Validate</h3>
     <vvElementUi />
+  </div>
+  <div>
+    <h3>Vee Validate Custom Field</h3>
+    <vvCustomField />
   </div>
 </template>

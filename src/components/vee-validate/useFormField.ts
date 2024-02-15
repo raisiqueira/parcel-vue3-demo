@@ -8,7 +8,7 @@ import {
   useIsFieldValid,
 } from "vee-validate";
 
-import { FORM_ITEM_INJECTION_KEY } from "./field-item.vue";
+import { FORM_ITEM_INJECTION_KEY } from "./constants";
 
 export function useFormField() {
   const fieldContext = inject(FieldContextKey);
