@@ -5,8 +5,8 @@ import VueFormGenerator from 'vue3-form-generator'
 import 'vue3-form-generator/dist/style.css'
 
 import App from "./App.vue";
-import FieldElInput from "./components/field-el-input.vue"
-import FieldElInputComposition from "./components/field-el-input-composition.vue"
+import FieldElInput from "./components/vfg-fields/field-el-input.vue"
+import FieldElInputComposition from "./components/vfg-fields/field-el-input-composition.vue"
 
 const app = createApp(App);
 app.use(ElementPlus)

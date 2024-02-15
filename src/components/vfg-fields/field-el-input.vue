@@ -1,5 +1,5 @@
 <script>
-import abstractField from "../plugins/vfg/fields/abstractField";
+import abstractField from "../../plugins/vfg/fields/abstractField";
 export default {
   name: "ElInputField",
   mixins: [abstractField],

@@ -16,16 +16,21 @@
     "parcel": "^2.11.0",
     "process": "^0.11.10",
     "pug": "^3.0.2",
-    "sass": "^1.70.0"
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@vee-validate/zod": "^4.12.5",
     "@vue/compat": "^3.4.15",
     "element-plus": "^2.5.3",
     "element-ui": "^2.15.14",
     "fecha": "^4.2.3",
     "lodash": "^4.17.21",
+    "radix-vue": "^1.4.2",
+    "vee-validate": "^4.12.5",
     "vue": "^3.4.15",
     "vue-form-generator": "^2.3.4",
-    "vue3-form-generator": "^1.0.17"
+    "vue3-form-generator": "^1.0.17",
+    "zod": "^3.22.4"
   }
 }

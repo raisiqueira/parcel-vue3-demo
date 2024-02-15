@@ -1,0 +1,5 @@
+export { Form, Field as FormField } from 'vee-validate'
+export { default as formItem } from './form-item.vue'
+export { default as formControl } from './form-control.vue'
+export { default as formMessage } from './form-message.vue'
+export { default as formDescription } from './form-description.vue'
