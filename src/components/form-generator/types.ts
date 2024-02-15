@@ -1,4 +1,17 @@
-interface FormGeneratorField {}
+type FormGeneratorFieldTypes = "text" | "checkbox" | "array";
+
+interface FormGeneratorField {
+  /** The field to be used (text, number, color picker, etc). */
+  as: FormGeneratorFieldTypes;
+  /** The name of the form field. */
+  name: string;
+  /** The label of the form field. If it is not present, the label will be the name. */
+  label?: string;
+  /** The initial value of the field. */
+  initialValue?: string | number | boolean;
+  /** Nested forms */
+  fields?: FormGeneratorField[];
+}
 
 interface FormGeneratorSchema {
   /** The Django Serializer used to mount the form */

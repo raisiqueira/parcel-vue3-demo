@@ -1,18 +1,50 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { Form, FormActions } from "vee-validate"
+import { useForm } from "vee-validate"
+import { fieldMapping } from "./useFieldMapping"
 import { type FormGeneratorSchema } from "./types"
+import fieldArray from "./field-array.vue"
 
 interface FormGeneratorProps {
   /** Form submission handler. */
-  onSubmit: (values: Record<string, any>, actions: FormActions<Record<string, any>>) => void;
+  onSubmit: (values: Record<string, any>) => void;
   /** Schema to mount the form. */
   schema: FormGeneratorSchema;
 }
 
 const props = defineProps<FormGeneratorProps>()
 
+const { resetForm, handleSubmit } = useForm({
+  initialValues: {
+    ...props.schema.fields.reduce((acc, field) => {
+      acc[field.name] = field.initialValue
+      return acc
+    }, {} as Record<string, any>)
+  },
+});
+
+const onSubmit = handleSubmit((values: Record<string, any>) => {
+  props.onSubmit(values);
+})
+
 </script>
 <template>
-  <Form as="el-form" @submit="props.onSubmit"></Form>
+  <el-form @submit="onSubmit" label-position="top">
+    <div v-for="field in props.schema.fields" :key="field.name">
+      <fieldArray v-if="field.as === 'array'" :name="field.name" :fields="field?.fields">
+        <!-- TODO: add the add and remove buttons. -->
+      </fieldArray>
+      <component
+        v-else
+        :is="fieldMapping[field.as]"
+        :name="field.name"
+        :label="field.label ? field.label : field.name"
+      />
+  </div>
+    <!-- TODO: let the parent component execute the submission and the reset. -->
+    <el-button type="primary" native-type="submit">Submit</el-button>
+    <el-button type="outline" native-type="button" @click="resetForm()">
+        Reset
+    </el-button>
+  </el-form>
 </template>

@@ -10,6 +10,7 @@ import vfgNative from "./examples/vfg-native.vue";
 import vfgElementUi from "./examples/vfg-element-ui.vue";
 import vvElementUi from "./examples/vv-element-ui.vue";
 import vvCustomField from "./examples/vv-custom-field.vue";
+import vvFormGenerator from "./examples/vv-form-generator.vue";
 
 const state = reactive({
   count: 0,
@@ -43,5 +44,9 @@ function increment() {
   <div>
     <h3>Vee Validate Custom Field</h3>
     <vvCustomField />
+  </div>
+  <div>
+    <h3>Vee Validate Form Generator</h3>
+    <vvFormGenerator />
   </div>
 </template>

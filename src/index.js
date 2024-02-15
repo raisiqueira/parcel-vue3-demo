@@ -20,4 +20,9 @@ app.component('fieldElInputComposition', FieldElInputComposition)
 // Global config
 app.config.globalProperties.$schemaDefinitions = schemaDefinitions;
 
+if (process.env.NODE_ENV === "development") {
+  app.config.devtools = true;
+  app.config.performance = true;
+}
+
 app.mount("#app");
