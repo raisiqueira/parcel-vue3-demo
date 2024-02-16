@@ -2,7 +2,7 @@
  import { formGenerator, type FormGeneratorSchema } from "../components/form-generator"
 
  const schema: FormGeneratorSchema = {
-  serializer: "custom",
+  serializer: "Campaign",
    fields: [
      {
        name: "name",
@@ -11,16 +11,16 @@
        initialValue: "johnDoe",
      },
      {
-       name: "email",
+       name: "description",
        as: "text",
-       label: "Email",
+       label: "Campaign Description",
      },
-     {
-      name: "terms",
-      as: "checkbox",
-      label: "I accept the terms and conditions",
-      initialValue: true,
-     }
+    //  {
+    //   name: "terms",
+    //   as: "checkbox",
+    //   label: "I accept the terms and conditions",
+    //   initialValue: true,
+    //  }
     ],
  };
 

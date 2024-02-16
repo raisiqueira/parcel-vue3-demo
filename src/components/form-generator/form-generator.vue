@@ -4,6 +4,7 @@ import { useForm } from "vee-validate"
 import { fieldMapping } from "./useFieldMapping"
 import { type FormGeneratorSchema } from "./types"
 import fieldArray from "./field-array.vue"
+import { toTypedSchema } from "../../validators/lmr-schema";
 
 interface FormGeneratorProps {
   /** Form submission handler. */
@@ -14,6 +15,8 @@ interface FormGeneratorProps {
 
 const props = defineProps<FormGeneratorProps>()
 
+const validationSchema = toTypedSchema(props.schema)
+
 const { resetForm, handleSubmit } = useForm({
   initialValues: {
     ...props.schema.fields.reduce((acc, field) => {
@@ -21,11 +24,16 @@ const { resetForm, handleSubmit } = useForm({
       return acc
     }, {} as Record<string, any>)
   },
+  validationSchema: {
+  name: 'required',
+  description: 'required',
+},
 });
 
 const onSubmit = handleSubmit((values: Record<string, any>) => {
   props.onSubmit(values);
 })
+
 
 </script>
 <template>
