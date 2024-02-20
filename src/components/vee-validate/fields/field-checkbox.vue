@@ -1,13 +1,15 @@
 <template>
-  <el-form-item :error="errorMessage">
-    <el-checkbox v-model="value">
+  <el-form-item :error="errorMessage" :required="meta.required">
+    <el-checkbox v-model="value" :checked="value" :validate-event="false" v-bind="$attrs">
       {{ label }}
     </el-checkbox>
   </el-form-item>
+  <pre>{{ JSON.stringify(meta) }}</pre>
 </template>
 
 <script>
-import { useField } from "vee-validate";
+import { useField, FormContextKey } from "vee-validate";
+import { inject } from "vue";
 
 export default {
   name: "CheckboxWithValidation",
@@ -23,15 +25,19 @@ export default {
     },
   },
   setup(props) {
-    const { value, errorMessage } = useField(props.name, undefined, {
+    const { value, errorMessage, checked, meta, ...rest } = useField(() => props.name, undefined, {
       type: "checkbox",
-      valueProp: true, // the default "checked" value
+      checkedValue: true,
       uncheckedValue: false,
     });
+
+    const x = inject(FormContextKey)
+    console.log({x})
 
     return {
       value,
       errorMessage,
+      meta,
     };
   },
 };

@@ -16,7 +16,7 @@ export default {
   },
 
   setup(props) {
-    const { value, errorMessage, meta } = useField(props.name);
+    const { value, errorMessage, meta } = useField(() => props.name);
 
     return {
       value,

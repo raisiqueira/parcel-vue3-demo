@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, watch } from "vue";
 import { useForm } from "vee-validate"
+import { toTypedSchema } from "@vee-validate/zod"
+
 import { fieldMapping } from "./useFieldMapping"
 import { type FormGeneratorSchema } from "./types"
+import { toZodSchema } from "./utils";
 import fieldArray from "./field-array.vue"
-import { toTypedSchema } from "../../validators/lmr-schema";
+import { mergeSchemaProperties } from "../../validators/lmr-schema";
 
 interface FormGeneratorProps {
   /** Form submission handler. */
@@ -15,23 +18,27 @@ interface FormGeneratorProps {
 
 const props = defineProps<FormGeneratorProps>()
 
-const validationSchema = toTypedSchema(props.schema)
+const mergedSchemaFields = mergeSchemaProperties(props.schema)
+console.log(mergedSchemaFields)
+const validationSchema = toZodSchema(mergedSchemaFields)
 
-const { resetForm, handleSubmit } = useForm({
+const { resetForm, handleSubmit, meta, values } = useForm({
   initialValues: {
     ...props.schema.fields.reduce((acc, field) => {
       acc[field.name] = field.initialValue
       return acc
     }, {} as Record<string, any>)
   },
-  validationSchema: {
-  name: 'required',
-  description: 'required',
-},
+  validationSchema: toTypedSchema(validationSchema),
 });
 
 const onSubmit = handleSubmit((values: Record<string, any>) => {
+  console.log("values from fg: ", values)
   props.onSubmit(values);
+})
+
+watch(values, (values) => {
+  console.log("formValue:", values);
 })
 
 
@@ -55,4 +62,5 @@ const onSubmit = handleSubmit((values: Record<string, any>) => {
         Reset
     </el-button>
   </el-form>
+  <pre>{{ JSON.stringify(meta) }}</pre>
 </template>

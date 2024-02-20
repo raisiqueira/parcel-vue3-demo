@@ -13,6 +13,9 @@ interface FormGeneratorField {
   fields?: FormGeneratorField[];
   /** A boolean to check if the field is required or not. */
   isRequired?: boolean;
+  minLength?: number;
+  maxLength?: number;
+  type?: "string" | "boolean" | "integer";
 }
 
 interface FormGeneratorSchema {

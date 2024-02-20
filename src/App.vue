@@ -28,23 +28,23 @@ function increment() {
     Count is: {{ state.count }} Double is: {{
       state?.double }}
   </el-button>
-  <div>
+  <!-- <div>
     <h3>Native VFG</h3>
     <vfgNative />
-  </div>
-  <div>
+  </div> -->
+  <!-- <div>
     <h3>ElementUI VFG</h3>
     <vfgElementUi />
-  </div>
+  </div> -->
 
-  <div>
+  <!-- <div>
     <h3>ElementUI Vee Validate</h3>
     <vvElementUi />
-  </div>
-  <div>
+  </div> -->
+  <!-- <div>
     <h3>Vee Validate Custom Field</h3>
     <vvCustomField />
-  </div>
+  </div> -->
   <div>
     <h3>Vee Validate Form Generator</h3>
     <vvFormGenerator />

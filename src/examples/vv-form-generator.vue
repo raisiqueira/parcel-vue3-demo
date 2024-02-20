@@ -15,17 +15,18 @@
        as: "text",
        label: "Campaign Description",
      },
-    //  {
-    //   name: "terms",
-    //   as: "checkbox",
-    //   label: "I accept the terms and conditions",
-    //   initialValue: true,
-    //  }
+     {
+      name: "terms",
+      as: "checkbox",
+      label: "I accept the terms and conditions",
+      initialValue: false,
+     }
     ],
  };
 
  const onSubmit = (values: Record<string, any>) => {
-   console.log("form submitted from form-gen component!", JSON.stringify(values, null, 2));
+  console.log({values})
+   console.log("form submitted from form-gen component!", values);
  }
 </script>
 <template>

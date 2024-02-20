@@ -1,4 +1,4 @@
-import { type TypedSchema, type RawFormSchema, type TypedSchemaError } from 'vee-validate'
+import { type TypedSchema, type TypedSchemaError } from 'vee-validate'
 import { validate, validateObject } from 'vee-validate'
 import { inject } from 'vue';
 import lodashMerge from "lodash/merge";
@@ -91,7 +91,7 @@ function getDescriptionFromExpression(rules: string | Record<string, any>) {
   };
 }
 
-function mergeSchemaProperties(formSchema: FormGeneratorSchema) {
+export function mergeSchemaProperties(formSchema: FormGeneratorSchema) {
   const availableDefinitions = inject(SchemaDefinitionsSymbol);
 
   if (!availableDefinitions) {
